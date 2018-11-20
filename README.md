@@ -1,2 +1,3 @@
 # Workshop
-Workshop library at Yokoyama Laboratory on Every Friday!!
+This is Workshop Library at Yokoyama Lab.
+Workshop is usually held on Every Friday.
