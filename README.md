@@ -1,3 +1,2 @@
 # Workshop
-This is Workshop Library at Yokoyama Lab.
-Workshop is usually held on Every Friday.
+勉強会に用いたスライドやコードを保存する共有リポジトリです．
