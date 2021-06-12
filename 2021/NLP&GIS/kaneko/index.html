@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>spot data</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+</head>
+<body>
+    検索する観光地
+    <form id="message_form" action="#">
+      <input id="input_msg" autocomplete="off" /><button>Send</button>
+    </form>
+    <p id="display_data"></p>
+  <script>
+      var socketio = io();
+      $(function(){
+          $('#message_form').submit(function(){
+            socketio.emit('get_data', $('#input_msg').val());
+            $('#input_msg').val('');
+            return false;
+          });
+          socketio.on('send_data',function(msg){
+            data = '<h1>' + msg.title + '</h1>' 
+            data += '<h2>リード文</h2><p>' + msg.lead_sentence + '</p>'
+            data += '<h2>概要</h2><p>'+msg.overview+ '</p>'
+            data += '<h2>緯度経度</h2><p>' + msg.longitude_latitude + '</p>'
+            data += '<h2>住所</h2><p>' + msg.addr + '</p>'
+            data += '<h2>住所補足</h2><p>' + msg.note + '</p>'
+            document.getElementById("display_data").innerHTML = data;
+          });
+        });
+    </script>
+</body>
+</html>
