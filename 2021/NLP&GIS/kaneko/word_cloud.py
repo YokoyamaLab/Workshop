@@ -21,7 +21,9 @@ fpath = "~/Library/Fonts/RictyDiminished-for-Powerline/RictyDiminished-Bold.ttf"
 csv_file = "wikidata2_hand.csv"
 
 t = Tokenizer()
-
+vectorizer = TfidfVectorizer(use_idf=True, token_pattern=u'(?u)\\b\\w+\\b')
+vecs = None
+dictionary = None
 ## 関数群の定義
 def get_nouns(sentence, noun_list):
     for token in t.tokenize(sentence):
@@ -51,8 +53,7 @@ def depict_word_cloud_freq(title,noun_list):
 
 # https://tech.enigmo.co.jp/entry/2018/12/19/112837
 def depict_word_cloud_tfidf(title,noun_list):
-    vectorizer = TfidfVectorizer(use_idf=True, token_pattern=u'(?u)\\b\\w+\\b')
-    vecs = vectorizer.fit_transform(noun_list)
+    
     words_vectornumber = {}
     for k,v in sorted(vectorizer.vocabulary_.items(), key=lambda x:x[1]):
         words_vectornumber[v] = k
@@ -90,7 +91,7 @@ def depict_word_cloud_tfidf(title,noun_list):
 
 # https://qiita.com/d-ogawa/items/c423cd4b01c6ed84a5e7
 def depict_word_cloud_lda(title,noun_list):
-    dictionary = gensim.corpora.Dictionary(noun_list)
+    
     #dictionary.filter_extremes(no_below=3, no_above=0.5)
     corpus = [dictionary.doc2bow(t) for t in noun_list]
     # LDA
@@ -133,7 +134,16 @@ def depict_word_cloud_lda(title,noun_list):
 def main():
     f = open(csv_file,'r')
     reader = csv.reader(f)
+    learn_list = []
+    for row in reader:
+        for sentence in row:
+            get_nouns(sentence, learn_list)
+    vecs = vectorizer.fit_transform(learn_list)
+    dictionary = gensim.corpora.Dictionary(learn_list)
+    f.close()
     # cnt = 0
+    f = open(csv_file,'r')
+    reader = csv.reader(f)
     for row in reader:
         noun_list = []
         for sentence in row:
