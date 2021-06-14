@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>東京都の観光地</title>
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="style.css">
+        <script src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript" src="client.js"></script>
+        <meta name="description" content="東京都の観光地">
+    </head>
+
+    <body id="top">
+        <div id="wrapper">
+            <div id="sidebar">
+                <div id="sidebarWrap">
+                    <h1>
+                        <form name="myform" action="#" onsubmit="return searchSpot()">
+                        <input type="mytext" id="textbox">
+                        <input type="submit" value="検索">
+                        </form>
+                    </h1>
+                </div>
+            </div>
+
+            <div id="content">
+                <!-- MESSAGE -->
+                <section id="sec01">
+                    <header>
+                        <h2 id="title"><span>SPOT NAME</span></h2>
+                    </header>
+                    <div class="innerS" id="lead">
+                        リード文
+                    </div>
+                </section>
+
+                <p><img id="wordcloud" src="img/mainImg.jpg" alt=""></p>
+
+                <!-- PROJECT -->
+                <section id="sec04">
+                    <header>
+                        <h2><span>OVERVIEW</span></h2>
+                    </header>
+                    <div class="inner">
+                        <div class="article">
+                            <!-- <img src="images/photo14.jpg" width="370" height="224" alt=""> -->
+                            <p id="overview">概要文</p>
+                        </div>
+                    </div>
+                </section>
+                <!-- COMPANY -->
+                <section id="sec05">
+                    <header>
+                        <h2><span>LOCATION</span></h2>
+                    </header>
+                    <div class="inner">
+                        <ul class="col2">
+                            <li>
+                                <h3 id="address">住所</h3>
+                                <h3 id="latitude">緯度</h3>
+                                <h3 id="longitude">緯度</h3>
+                            </li>
+                            <li>
+                                <!-- <div id="map">
+                                    GOOGLE MAP
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3198.5937927089367!2d136.92980931491988!3d36.70829797996758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff781ec5af4ca3f%3A0x2ade3e8e4c2801b8!2z56aP5bKh6aeF!5e0!3m2!1sja!2sus!4v1478313402186" allowfullscreen></iframe> -->
+                                <!-- </div> -->
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <footer id="footer">
+                    Copyright(c) 2016 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank">http://f-tpl.com</a><!-- ←クレジット表記を外す場合はシリアルキーが必要です http://f-tpl.com/credit/ -->
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>

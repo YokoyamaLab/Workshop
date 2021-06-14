@@ -1,0 +1,9 @@
+# 設定ファイル
+__pycache__/
+.vscode/
+# npm
+node_modules/
+# wikipediaからとってきたcsvとjson
+data/
+# wordcloudの画像ファイル
+img/
